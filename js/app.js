@@ -461,10 +461,32 @@ window.openProjectModal = function(id) {
 
 window.switchGallery = function(i) {
     if (i < 0 || i >= galleryImgs.length) return;
+    const dir = i > galleryIdx ? 1 : (i < galleryIdx ? -1 : 1);
     galleryIdx = i;
+    
     const img = document.getElementById('gallery-main-img');
+    
+    // Start exit animation (slide out slightly and fade)
+    img.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    img.style.transform = `scale(0.97) translateX(${dir * -20}px)`;
     img.style.opacity = '0';
-    setTimeout(() => { img.src = galleryImgs[i]; img.style.opacity = '1'; }, 150);
+    
+    setTimeout(() => { 
+        img.src = galleryImgs[i]; 
+        
+        // Reset to start position for enter animation
+        img.style.transition = 'none';
+        img.style.transform = `scale(1.03) translateX(${dir * 20}px)`;
+        
+        // Force reflow
+        void img.offsetWidth;
+        
+        // Execute enter animation
+        img.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+        img.style.transform = 'scale(1) translateX(0)';
+        img.style.opacity = '1'; 
+    }, 250);
+    
     document.querySelectorAll('#gallery-thumbs img').forEach((t, j) => t.classList.toggle('active', j === i));
     updateCounter();
 };

@@ -4098,8 +4098,7 @@ section { position: relative; }
 .project-img-small {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #080a12; /* Match the body/surface background */
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
