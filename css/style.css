@@ -4090,9 +4090,9 @@ section { position: relative; }
 .project-thumb-small {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: #111;
+    background: transparent;
 }
 
 .project-img-small {
@@ -4171,7 +4171,7 @@ section { position: relative; }
     justify-content: center;
     border: 2px dashed var(--border);
     background: transparent;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1 / 1;
 }
 
 .coming-inner-small span {
