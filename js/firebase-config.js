@@ -21,12 +21,14 @@
 // 5. Ganti semua 'YOUR_...' di bawah
 
 const FIREBASE_CONFIG = {
-    apiKey: 'AIzaSyArf6nF46CmEQHIEEWGW7244vwGHbp37Tk',
-    authDomain: 'portofolio-jayyid-jiddan.firebaseapp.com',
-    projectId: 'portofolio-jayyid-jiddan',
-    storageBucket: 'portofolio-jayyid-jiddan.firebasestorage.app',
-    messagingSenderId: '40523417316',
-    appId: '1:40523417316:web:2501bcb3d2c8a2d02f8cf1'
+    apiKey: "AIzaSyArf6nF46CmEQHIEEWGW7244vwGHbp37Tk",
+    authDomain: "portofolio-jayyid-jiddan.firebaseapp.com",
+    databaseURL: "https://portofolio-jayyid-jiddan-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "portofolio-jayyid-jiddan",
+    storageBucket: "portofolio-jayyid-jiddan.firebasestorage.app",
+    messagingSenderId: "40523417316",
+    appId: "1:40523417316:web:2501bcb3d2e8a2d02f8ef1",
+    measurementId: "G-2MSKZZ6MHB"
 };
 
 const EMAILJS_CONFIG = {
