@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayyid Jiddan — Portfolio</title>
+    <meta name="description" content="Portfolio of Jayyid Jiddan — Fresh Graduate Web Developer, AI Enthusiast, Full-Stack Builder from Sumatera Utara.">
+    <meta name="keywords" content="Jayyid Jiddan, Web Developer, AI, Portfolio, Full Stack, Indonesia">
+    <meta name="author" content="Jayyid Jiddan">
+    <meta name="theme-color" content="#080A12">
+
+    <meta property="og:title" content="Jayyid Jiddan - Portfolio">
+    <meta property="og:description" content="Portfolio of Jayyid Jiddan - Fresh Graduate Web Developer, AI Enthusiast, Full-Stack Builder dari Sumatera Utara.">
+    <meta property="og:image" content="https://jaydan87-nawaitu.hf.space/favicon.ico"> <!-- You can replace this later -->
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ═══ SCROLL PROGRESS BAR ═══ -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- ═══ ENERGY CANVAS ═══ -->
+    <canvas id="energy-canvas"></canvas>
+
+    <!-- ═══ LOADING SCREEN ═══ -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">&lt;JJ/&gt;</div>
+            <div class="loader-bar">
+                <div class="loader-bar-fill"></div>
+            </div>
+            <div class="loader-text">Initializing...</div>
+        </div>
+    </div>
+
+    <!-- ═══ CUSTOM CURSOR ═══ -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav class="navbar" id="navbar">
+        <a href="#hero" class="nav-logo" id="nav-logo">&lt;JJ/&gt;</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="#" onclick="window.adminPanel.open(); closeMenu(); return false;" style="color: var(--accent); border-top: 1px solid var(--border); margin-top: 10px; padding-top: 15px;">Login Admin</a>
+    </div>
+
+    <!-- ═══ HERO SECTION ═══ -->
+    <section class="hero" id="hero">
+        <div class="hero-energy"></div>
+        <!-- 3D Floating Orbs for Parallax -->
+        <div class="hero-float-elements" aria-hidden="true">
+            <div class="float-orb float-orb-1" data-speed="0.03"></div>
+            <div class="float-orb float-orb-2" data-speed="0.06"></div>
+            <div class="float-orb float-orb-3" data-speed="0.02"></div>
+            <div class="float-orb float-orb-4" data-speed="0.045"></div>
+            <div class="float-orb float-orb-5" data-speed="0.035"></div>
+        </div>
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="hero-badge" data-parallax="0.8">
+            <span class="dot"></span>
+            Fresh Graduate · Ready for Full-Time
+        </div>
+        <h1 class="hero-name" data-parallax="0.5">
+            <span class="first-name">JAYYID JIDDAN</span>
+            <span class="last-name">Bachelor of Computer Science</span>
+        </h1>
+        <p class="hero-role" data-parallax="0.7">Web Developer &amp; AI Enthusiast</p>
+        <p class="hero-desc" data-parallax="0.6">
+            Sarjana Ilmu Komputer yang membangun solusi digital nyata dari aplikasi Monitoring Online hingga UMKM Solution. Saya bukan hanya coder, saya seorang <strong>builder</strong>.
+        </p>
+        <div class="hero-cta" data-parallax="0.4">
+            <a href="#projects" class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                View Projects
+            </a>
+            <a href="#" class="btn btn-secondary" id="download-cv-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download CV
+            </a>
+        </div>
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: Hero → About ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">01</span>
+            PERKENALAN
+        </div>
+    </div>
+
+    <!-- ═══ ABOUT SECTION ═══ -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">About</div>
+                <h2 class="section-title">The Builder</h2>
+                <p class="section-subtitle">Lebih dari sekadar kode — ini adalah passion yang diwujudkan.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-wrapper reveal">
+                    <div class="about-image-frame" id="about-image-frame"></div>
+                </div>
+                <div class="about-text reveal">
+                    <h3>Jayyid Jiddan, S.Kom</h3>
+                    <p>
+                        Saya adalah lulusan <strong>S1 Ilmu Komputer</strong> dari UIN Sumatera Utara dengan GPA 3.52/4.00. Selama kuliah, saya tidak hanya belajar teori — namun saya langsung membangun aplikasi nyata yang digunakan oleh publik.
+                    </p>
+                    <p>
+                        Pengalaman magang di <strong>PT. Socfin Indonesia</strong> mengasah kemampuan saya dalam software testing dan kolaborasi tim. Seorang Builder tidak hanya memperbaiki namun juga harus bisa mencari masalah terhadap aplikasi mereka.
+                    </p>
+                    <p>
+                        Saat ini saya passionate di <strong>AI-assisted development</strong> — memanfaatkan kecerdasan buatan untuk mempercepat dan meningkatkan kualitas pengembangan software.
+                    </p>
+                    <div class="about-quote">
+                        <p>Fresh Graduate bukan berarti tanpa pengalaman — saya membuktikannya dengan karya nyata.</p>
+                    </div>
+                    <div class="stats-row" id="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="5">0</div>
+                            <div class="stat-label">Projects Live</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="1">0</div>
+                            <div class="stat-label">Internship</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="3.52" data-decimal="true">0</div>
+                            <div class="stat-label">GPA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="7">0</div>
+                            <div class="stat-label">Years As a Coder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: About → Skills ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">02</span>
+            KEMAMPUAN
+        </div>
+    </div>
+
+    <!-- ═══ SKILLS SECTION ═══ -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Arsenal</div>
+                <h2 class="section-title">Arsenal Teknologi</h2>
+                <p class="section-subtitle">Tools dan skills yang saya gunakan untuk membangun masa depan digital.</p>
+            </div>
+            <div class="skills-grid reveal" id="skills-grid">
+                <div class="skill-group" data-tilt>
+                    <h4>Languages &amp; Web</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Python</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-tilt>
+                    <h4>AI &amp; Tools</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Claude Code</span>
+                        <span class="skill-tag">Antigravity</span>
+                        <span class="skill-tag">Cursor</span>
+                        <span class="skill-tag">Codex</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Railway</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">Hugging Face</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-tilt>
+                    <h4>Productivity</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Microsoft Word</span>
+                        <span class="skill-tag">Microsoft Excel</span>
+                        <span class="skill-tag">Microsoft PowerPoint</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-tilt>
+                    <h4>Design</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Desain Digital</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Canva</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-tilt>
+                    <h4>Soft Skills</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Teamwork</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Adaptability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: Skills → Projects ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">03</span>
+            KARYA NYATA
+        </div>
+    </div>
+
+    <!-- ═══ PROJECTS SECTION ═══ -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Projects</div>
+                <h2 class="section-title">Maha Karya</h2>
+                <p class="section-subtitle">Aplikasi dihadirkan atas dasar keperluan dan masalah yang dialami. <strong>So Welcome To My Project !!!</strong></p>
+            </div>
+            <div class="projects-grid" id="projects-grid">
+                <!-- Rendered dynamically by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: Projects → Experience ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">04</span>
+            PERJALANAN
+        </div>
+    </div>
+
+    <!-- ═══ EXPERIENCE SECTION ═══ -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Journey</div>
+                <h2 class="section-title">Perjalanan</h2>
+                <p class="section-subtitle">Setiap langkah membentuk siapa saya hari ini.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-title">Owner &amp; SIPLAH Vendor</div>
+                    <div class="timeline-company">UMIJIDDAN ELEKTRONIK</div>
+                    <div class="timeline-location">Deli Serdang, Sumatera Utara</div>
+                    <div class="timeline-desc">"Mendirikan dan mengelola vendor SIPLAH di bidang elektronik. Membuktikan jiwa entrepreneurship sejak awal kuliah."</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov - Dec 2023</div>
+                    <div class="timeline-title">Software Testing Intern</div>
+                    <div class="timeline-company">PT. SOCFIN INDONESIA</div>
+                    <div class="timeline-location">Kota Medan, Sumatera Utara</div>
+                    <div class="timeline-desc">"Testing aplikasi internal perusahaan, identifikasi bug &amp; error, koordinasi dengan tim developer untuk optimalisasi sistem."</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Dec 2021 - Nov 2022</div>
+                    <div class="timeline-title">Programming Instructor</div>
+                    <div class="timeline-company">HAXORS</div>
+                    <div class="timeline-location">UIN Sumatera Utara</div>
+                    <div class="timeline-desc">"Mengajar pemrograman, mendiskusikan pengembangan web &amp; app, serta berkolaborasi dalam debugging dan problem solving."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: Experience → Education ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">05</span>
+            PENDIDIKAN
+        </div>
+    </div>
+
+    <!-- ═══ EDUCATION SECTION ═══ -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Education</div>
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">Menurut saya ilmu itu menentukan seberapa layak kita untuk berbicara.</p>
+            </div>
+            <div class="edu-card reveal" data-tilt>
+                <div class="edu-degree">Pendidikan Terakhir</div>
+                <div class="edu-school">Universitas Islam Negeri Sumatera Utara</div>
+                <div class="edu-degree">S1 Ilmu Komputer</div>
+                <div class="edu-year">2021 - 2026</div>
+                <div class="edu-gpa-number" id="gpa-number">0.00</div>
+                <div class="edu-gpa-label">GPA / 4.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ STORYTELLING: Education → Contact ═══ -->
+    <div class="section-divider">
+        <div class="divider-text reveal">
+            <span class="divider-number">06</span>
+            KOLABORASI
+        </div>
+    </div>
+
+    <!-- ═══ CONTACT SECTION ═══ -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Connect</div>
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p class="section-subtitle">Open for Full-Time Opportunities — On-Site atau Remote</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3>Hubungi Saya</h3>
+                    <p>Saya terbuka untuk diskusi tentang peluang kerja, kolaborasi proyek, atau sekadar ngobrol tentang teknologi.</p>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📩</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Email</div>
+                            <div class="contact-item-value">jayyidjiddan87@gmail.com</div>
+                        </div>
+                        <button class="contact-action" onclick="copyToClipboard('jayyidjiddan87@gmail.com')">Copy</button>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🗨️</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">WhatsApp</div>
+                            <div class="contact-item-value">+62 831-1609-7928</div>
+                        </div>
+                        <a href="https://wa.me/6283116097928" target="_blank" class="contact-action">Chat</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🏂</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Another Portfolio</div>
+                            <div class="contact-item-value">jyydan.github.io</div>
+                        </div>
+                        <a href="https://jyydan.github.io/PORTOFOLIO/" target="_blank" class="contact-action">Visit</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <div class="contact-item-label">Lokasi</div>
+                            <div class="contact-item-value">Deli Serdang, Sumatera Utara</div>
+                        </div>
+                    </div>
+
+                    <p class="contact-closing">"Kapan nih mau kerja bareng? Ditunggu ya !!!"</p>
+                </div>
+
+                <div class="contact-form reveal">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" name="from_name" id="contact-name" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="from_email" id="contact-email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea name="message" id="contact-message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            <span class="btn-text">Kirim Pesan</span>
+                            <span class="btn-loading" style="display:none;">
+                                <span class="spinner"></span> Mengirim...
+                            </span>
+                        </button>
+                        <div class="form-status" id="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="footer-logo">&lt;JJ/&gt;</div>
+        <p class="footer-text">
+            &copy; 2026 Jayyid Jiddan. All Rights Reserved.<br>
+            as <span class="accent">Sains &amp; Technology</span> &amp; <span class="accent">Computer Science</span> from Deli Serdang, Sumatera Utara
+        </p>
+    </footer>
+
+    <!-- ═══ TOAST ═══ -->
+    <div class="toast" id="toast">Copied to clipboard</div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- ═══ PROJECT DETAIL MODAL ═══ -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="project-detail-modal" class="project-modal">
+        <div class="project-modal-backdrop" id="project-modal-backdrop"></div>
+        <div class="project-modal-content">
+            <button class="project-modal-close" id="project-modal-close">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="project-modal-body">
+                <div class="project-modal-gallery">
+                    <div class="gallery-main-wrap">
+                        <img id="gallery-main-img" src="" alt="Project Screenshot">
+                        <button class="gallery-nav gallery-prev" id="gallery-prev">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <button class="gallery-nav gallery-next" id="gallery-next">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                        <div class="gallery-counter" id="gallery-counter">1 / 1</div>
+                    </div>
+                    <div class="gallery-thumbs" id="gallery-thumbs"></div>
+                </div>
+                <div class="project-modal-info">
+                    <div class="modal-status" id="modal-status"></div>
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <div class="modal-tags" id="modal-tags"></div>
+                    <div class="modal-description" id="modal-description"></div>
+                    <div class="modal-detail-row">
+                        <div class="modal-stack" id="modal-stack"></div>
+                    </div>
+                    <div class="modal-links" id="modal-links"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- ═══ ADMIN PANEL ═══ -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="admin-overlay" class="admin-overlay">
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h2>⚡ ADMIN PANEL</h2>
+                <button class="admin-close" id="admin-close">✕</button>
+            </div>
+            <div class="admin-body">
+                <!-- Login Screen -->
+                <div id="admin-login" class="admin-login">
+                    <div class="admin-login-icon">🔐</div>
+                    <h3>AUTHENTICATION</h3>
+                    <p>Masukkan password untuk mengakses Admin Panel</p>
+                    <input type="password" id="admin-password" class="admin-login-input" placeholder="Password">
+                    <br>
+                    <button id="admin-login-btn" class="admin-login-btn">UNLOCK</button>
+                    <div id="admin-login-error" class="admin-login-error">Password salah!</div>
+                </div>
+                <!-- Dashboard -->
+                <div id="admin-dashboard" style="display:none;">
+                    <div class="admin-tabs">
+                        <button class="admin-tab active" data-tab="projects">📁 Projects</button>
+                        <button class="admin-tab" data-tab="profile">👤 Profile</button>
+                        <button class="admin-tab" data-tab="cv">📄 CV</button>
+                        <button class="admin-tab" data-tab="data">💾 Data</button>
+                    </div>
+
+                    <!-- Projects Tab -->
+                    <div id="tab-projects" class="admin-tab-content">
+                        <div class="admin-actions-bar">
+                            <span class="admin-hint">Kelola project portofolio</span>
+                            <button class="admin-btn admin-btn-primary" id="admin-add-btn">+ Tambah Project</button>
+                        </div>
+                        <div class="admin-project-list" id="admin-project-list"></div>
+                    </div>
+
+                    <!-- Profile Tab -->
+                    <div id="tab-profile" class="admin-tab-content" style="display:none;">
+                        <div class="admin-profile-section">
+                            <h4 class="admin-section-title">Foto Profil</h4>
+                            <div class="admin-profile-preview" id="admin-profile-preview">
+                                <div class="admin-profile-image" id="admin-profile-upload">
+                                    <span class="profile-upload-hint">Klik untuk upload foto</span>
+                                </div>
+                            </div>
+                            <input type="file" id="profile-file-input" accept="image/*" style="display:none;">
+                            <div class="admin-profile-actions" id="admin-profile-actions">
+                                <button class="admin-btn" id="profile-change-btn">📷 Ganti Foto</button>
+                                <button class="admin-btn admin-btn-danger" id="profile-delete-btn">🗑️ Hapus Foto</button>
+                            </div>
+                            <p class="admin-hint">Upload foto profil (JPG/PNG, max 2MB)</p>
+                        </div>
+                    </div>
+
+                    <!-- CV Tab -->
+                    <div id="tab-cv" class="admin-tab-content" style="display:none;">
+                        <div class="admin-cv-section">
+                            <h4 class="admin-section-title">Curriculum Vitae</h4>
+                            <div class="cv-current-info" id="cv-current-info">
+                                <div class="cv-empty-state">
+                                    <div class="cv-empty-icon">📄</div>
+                                    <p>Belum ada CV yang diupload</p>
+                                </div>
+                            </div>
+                            <div class="cv-upload-zone" id="cv-upload-zone">
+                                <div class="upload-icon">📎</div>
+                                <div class="upload-text">Drag & drop atau klik untuk upload CV</div>
+                                <div class="upload-hint">PDF — Max 5MB</div>
+                                <input type="file" id="cv-file-input" accept=".pdf" style="display:none;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export/Import Tab -->
+                    <div id="tab-data" class="admin-tab-content" style="display:none;">
+                        <div class="admin-data-section">
+                            <div class="data-block">
+                                <h4 class="admin-section-title">Export Data</h4>
+                                <p class="admin-hint">Download semua data project sebagai JSON file.</p>
+                                <button class="admin-btn" id="admin-export-btn">📦 Export JSON</button>
+                            </div>
+                            <hr class="admin-divider">
+                            <div class="data-block">
+                                <h4 class="admin-section-title">Import Data</h4>
+                                <p class="admin-hint">Import data project dari JSON file.</p>
+                                <button class="admin-btn" id="admin-import-btn">📥 Import JSON</button>
+                                <input type="file" id="import-file-input" accept=".json" style="display:none;">
+                            </div>
+                            <hr class="admin-divider">
+                            <div class="data-block">
+                                <h4 class="admin-section-title">Firebase Status</h4>
+                                <div class="firebase-status" id="firebase-status">
+                                    <span class="status-dot status-checking"></span>
+                                    <span>Checking connection...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- ═══ PROJECT FORM MODAL ═══ -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="admin-form-overlay" class="admin-form-overlay">
+        <div class="admin-form-panel">
+            <div class="admin-form-header">
+                <h3 id="admin-form-title">Tambah Project</h3>
+                <button class="admin-close" id="admin-form-close">✕</button>
+            </div>
+            <div class="admin-form-body">
+                <form id="admin-form">
+                    <input type="hidden" id="form-project-id">
+                    <div class="admin-field">
+                        <label>Nama Aplikasi *</label>
+                        <input type="text" id="form-title" placeholder="Nama project" required>
+                    </div>
+                    <div class="admin-field-row">
+                        <div class="admin-field">
+                            <label>Status</label>
+                            <select id="form-status">
+                                <option value="LIVE">🟢 LIVE</option>
+                                <option value="DEV">🟡 IN DEVELOPMENT</option>
+                                <option value="ARCHIVED">⚪ ARCHIVED</option>
+                            </select>
+                        </div>
+                        <div class="admin-field">
+                            <label>Tech Stack</label>
+                            <input type="text" id="form-stack" placeholder="e.g. PHP · MySQL">
+                        </div>
+                    </div>
+                    <div class="admin-field">
+                        <label>Tags (comma separated)</label>
+                        <input type="text" id="form-tags" placeholder="e.g. Music, Python, AI">
+                    </div>
+                    <div class="admin-field">
+                        <label>Penjelasan Aplikasi</label>
+                        <textarea id="form-description" placeholder="Deskripsi lengkap project..." rows="4"></textarea>
+                    </div>
+                    <div class="admin-field-row">
+                        <div class="admin-field">
+                            <label>Link Aplikasi (Live Demo)</label>
+                            <input type="url" id="form-live-url" placeholder="https://...">
+                        </div>
+                        <div class="admin-field">
+                            <label>GitHub URL</label>
+                            <input type="url" id="form-github-url" placeholder="https://github.com/...">
+                        </div>
+                    </div>
+                    <!-- Main Screenshot -->
+                    <div class="admin-field">
+                        <label>Screenshot Utama</label>
+                        <div class="image-upload-zone" id="project-image-zone">
+                            <div class="upload-icon">📷</div>
+                            <div class="upload-text">Drag & drop atau klik untuk upload</div>
+                            <div class="upload-hint">JPG, PNG, WebP — Max 2MB</div>
+                            <input type="file" id="project-image-input" accept="image/*">
+                        </div>
+                        <div class="image-preview" id="project-image-preview" style="display:none;"></div>
+                    </div>
+                    <!-- Multi-image Documentation -->
+                    <div class="admin-field">
+                        <label>Foto Dokumentasi <span class="label-hint">(Max 10 foto)</span></label>
+                        <div class="multi-image-upload-zone" id="multi-image-zone">
+                            <div class="upload-icon">🖼️</div>
+                            <div class="upload-text">Drag & drop atau klik untuk upload foto dokumentasi</div>
+                            <div class="upload-hint">JPG, PNG, WebP — Max 2MB per foto</div>
+                            <input type="file" id="multi-image-input" accept="image/*" multiple>
+                        </div>
+                        <div class="multi-image-preview" id="multi-image-preview"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="admin-form-footer">
+                <button class="admin-btn" id="admin-form-cancel">Batal</button>
+                <button class="admin-btn admin-btn-primary" id="admin-form-save">💾 Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <!-- Firebase SDK (compat — Firestore only, no Storage needed) -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
