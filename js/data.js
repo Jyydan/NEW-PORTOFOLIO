@@ -142,11 +142,15 @@ const DataManager = {
         }
 
         // Load projects from Firestore
+        let fbProjects = [];
         try {
             if (firebaseReady) {
-                const snap = await db.collection('projects').orderBy('order').get();
+                const snap = await db.collection('projects').get();
                 if (!snap.empty) {
-                    const fbProjects = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                    fbProjects = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                    // Sort by order manually
+                    fbProjects.sort((a, b) => (a.order || 99) - (b.order || 99));
+                    
                     // Load doc images from separate collection
                     for (const proj of fbProjects) {
                         try {
@@ -154,16 +158,48 @@ const DataManager = {
                             if (imgDoc.exists) proj.images = imgDoc.data().images || [];
                         } catch (e) { /* no images doc */ }
                     }
-                    this._projectsCache = fbProjects;
-                    this._initialized = true;
-                    return;
                 }
             }
         } catch (e) { console.warn('Projects load from Firebase failed:', e); }
 
-        // Fallback: merge originals with localStorage
-        this._projectsCache = this._mergeLocalProjects();
+        // Merge originals with localStorage AND Firebase
+        this._projectsCache = this._mergeAllProjects(fbProjects);
         this._initialized = true;
+    },
+
+    _mergeAllProjects: function(fbProjects = []) {
+        const stored = JSON.parse(localStorage.getItem('portfolio_custom_projects')) || [];
+        let all = [...PROJECTS_DATA];
+        
+        // Merge from LocalStorage
+        stored.forEach(sp => {
+            const idx = all.findIndex(p => p.id === sp.id);
+            if (idx !== -1) {
+                if (sp.deleted) all[idx].deleted = true;
+                else all[idx] = { ...all[idx], ...sp, isOriginal: true };
+            } else if (!sp.deleted) {
+                all.push({ ...sp, isOriginal: false });
+            }
+        });
+        
+        // Merge from Firebase (Firebase is the ultimate source of truth)
+        fbProjects.forEach(fp => {
+            const idx = all.findIndex(p => p.id === fp.id);
+            if (idx !== -1) {
+                if (fp.deleted) all[idx].deleted = true;
+                else all[idx] = { ...all[idx], ...fp, isOriginal: all[idx].isOriginal };
+            } else if (!fp.deleted) {
+                all.push({ ...fp, isOriginal: false });
+            }
+        });
+        
+        // Filter out deleted
+        all = all.filter(p => !p.deleted);
+        
+        // Sort by order
+        all.sort((a, b) => (a.order || 99) - (b.order || 99));
+        
+        return all;
     },
 
     _mergeLocalProjects: function() {
@@ -221,7 +257,10 @@ const DataManager = {
                     // Delete images doc if no images
                     try { await db.collection('project_images').doc(data.id).delete(); } catch(e) {}
                 }
-            } catch (e) { console.warn('Firestore save failed:', e); }
+            } catch (e) { 
+                console.warn('Firestore save failed:', e); 
+                alert("Peringatan: Gagal menyimpan ke server Firebase secara permanen (" + e.message + "). Data hanya tersimpan di memori browser Anda.");
+            }
         }
     },
 
