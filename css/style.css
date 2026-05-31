@@ -4629,7 +4629,8 @@ section { position: relative; }
 }
 
 @media (max-width: 900px) {
-    .project-cinematic-card {
+    .project-cinematic-card,
+    .project-cinematic-card.reversed {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
