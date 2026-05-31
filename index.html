@@ -17,7 +17,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="manifest" href="manifest.json">
@@ -31,17 +31,6 @@
 
     <!-- ═══ ENERGY CANVAS ═══ -->
     <canvas id="energy-canvas"></canvas>
-
-    <!-- ═══ LOADING SCREEN ═══ -->
-    <div id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">&lt;JJ/&gt;</div>
-            <div class="loader-bar">
-                <div class="loader-bar-fill"></div>
-            </div>
-            <div class="loader-text">Initializing...</div>
-        </div>
-    </div>
 
     <!-- ═══ CUSTOM CURSOR ═══ -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -76,6 +65,12 @@
 
     <!-- ═══ HERO SECTION ═══ -->
     <section class="hero" id="hero">
+        <div class="hero-video-wrap">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="images/Vidio.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
         <div class="hero-energy"></div>
         <!-- 3D Floating Orbs for Parallax -->
         <div class="hero-float-elements" aria-hidden="true">
