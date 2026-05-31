@@ -641,11 +641,11 @@ strong {
 
 .last-name {
     display: inline-block;
-    background: rgba(0, 255, 163, 0.15);
-    color: var(--accent);
+    background: rgba(0, 255, 163, 0.8);
+    color: #000000;
     padding: 0.15em 0.4em;
     border-radius: 4px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.35em;
     letter-spacing: 6px;
     margin-top: 0.5rem;
@@ -677,6 +677,11 @@ strong {
     animation: fadeUp 0.8s ease both;
     animation-delay: 0.9s;
 }
+
+.hero-desc strong {
+    color: var(--accent);
+}
+
 
 .hero-cta {
     display: flex;
