@@ -305,20 +305,10 @@ if (heroVideo) {
             const sy = window.scrollY;
             const heroH = window.innerHeight;
             if (sy < heroH * 1.5) {
-                heroVideo.style.transform = `translateY(${sy * 0.35}px) scale(1.1)`;
+                heroVideo.style.transform = `translateY(${sy * 0.3}px)`;
             }
         });
     });
-
-    // Mouse parallax (desktop only)
-    if (!isTouch) {
-        document.querySelector('.hero')?.addEventListener('mousemove', (e) => {
-            const cx = (e.clientX / window.innerWidth - 0.5) * 2;
-            const cy = (e.clientY / window.innerHeight - 0.5) * 2;
-            const sy = window.scrollY;
-            heroVideo.style.transform = `translateY(${sy * 0.35}px) scale(1.1) translate(${cx * -15}px, ${cy * -10}px)`;
-        });
-    }
 
     // Pause video when not visible for performance
     const videoObserver = new IntersectionObserver((entries) => {
