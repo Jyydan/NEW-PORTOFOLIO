@@ -52,10 +52,10 @@ class LightStreak {
     generatePath() {
         this.points = [];
         let x = Math.random() * canvas.width;
-        let y = canvas.height * 0.9;
+        let y = 0;
         for (let i = 0; i < 6; i++) {
-            const nx = x + (Math.random() - 0.5) * 40;
-            const ny = y - canvas.height * 0.07;
+            const nx = x + (Math.random() - 0.5) * 60;
+            const ny = y + (canvas.height / 6);
             this.points.push({ x1: x, y1: y, x2: nx, y2: ny });
             x = nx; y = ny;
         }
@@ -404,13 +404,6 @@ window.renderProjects = function() {
             </div>
         </article>`;
     });
-
-    html += `
-    <article class="project-card-small project-coming-small reveal-scale">
-        <div class="coming-inner-small">
-            <span>🚀 Next Project</span>
-        </div>
-    </article>`;
 
     grid.innerHTML = html;
     setupCursorHovers(); setupScrollReveal(); initTiltEffects();

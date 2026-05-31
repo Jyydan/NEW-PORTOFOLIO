@@ -568,4 +568,5 @@ class AdminPanel {
 let adminPanel;
 window.addEventListener('DOMContentLoaded', () => {
     adminPanel = new AdminPanel();
+    window.adminPanel = adminPanel;
 });

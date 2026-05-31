@@ -11,7 +11,7 @@
 
     <meta property="og:title" content="Jayyid Jiddan - Portfolio">
     <meta property="og:description" content="Portfolio of Jayyid Jiddan - Fresh Graduate Web Developer, AI Enthusiast, Full-Stack Builder dari Sumatera Utara.">
-    <meta property="og:image" content="https://jaydan87-nawaitu.hf.space/favicon.ico"> <!-- You can replace this later -->
+    <meta property="og:image" content="images/logo.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -20,6 +20,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 <body>
 
@@ -667,5 +670,18 @@
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
     <script src="js/admin.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

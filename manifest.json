@@ -1,0 +1,21 @@
+{
+  "name": "Jayyid Jiddan Portfolio",
+  "short_name": "JJ Portfolio",
+  "description": "Portfolio of Jayyid Jiddan - Web Developer & AI Enthusiast",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080A12",
+  "theme_color": "#080A12",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -4005,7 +4005,8 @@ section { position: relative; }
     .skills-grid { grid-template-columns: 1fr !important; }
     
     /* Projects */
-    .projects-grid { grid-template-columns: 1fr !important; }
+    .projects-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    .project-card-small { transform: scale(0.95); transform-origin: center; margin: 0 auto; width: 90%; }
     .project-click-overlay { opacity: 0.8; } /* Always partially visible on mobile */
     .click-icon { transform: scale(0.8); }
     
