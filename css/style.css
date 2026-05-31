@@ -499,7 +499,7 @@ strong {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 12rem 2rem 2rem;
+    padding: 22rem 2rem 2rem;
     z-index: 2;
     overflow: hidden;
 }
@@ -4661,7 +4661,7 @@ section { position: relative; }
 }
 
 .nav-logo-img {
-    height: 35px;
+    height: 50px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -4674,7 +4674,7 @@ section { position: relative; }
 }
 
 .footer-logo-img {
-    height: 50px;
+    height: 70px;
     width: auto;
     display: block;
     margin: 0 auto;
