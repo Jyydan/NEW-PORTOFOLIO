@@ -284,14 +284,17 @@ window.addEventListener('scroll', () => {
 // ═══ FLOAT ORB MOUSE PARALLAX ═══
 // ═══════════════════════════════════════════════
 if (!isTouch) {
-    document.addEventListener('mousemove', e => {
-        const cx = (e.clientX / window.innerWidth - 0.5) * 2;
-        const cy = (e.clientY / window.innerHeight - 0.5) * 2;
-        document.querySelectorAll('.float-orb').forEach(orb => {
-            const speed = parseFloat(orb.dataset.speed) || 0.03;
-            orb.style.transform = `translate(${cx * speed * 120}px, ${cy * speed * 120}px)`;
+    const floatOrbs = document.querySelectorAll('.float-orb');
+    if (floatOrbs.length > 0) {
+        document.addEventListener('mousemove', e => {
+            const cx = (e.clientX / window.innerWidth - 0.5) * 2;
+            const cy = (e.clientY / window.innerHeight - 0.5) * 2;
+            floatOrbs.forEach(orb => {
+                const speed = parseFloat(orb.dataset.speed) || 0.03;
+                orb.style.transform = `translate(${cx * speed * 120}px, ${cy * speed * 120}px)`;
+            });
         });
-    });
+    }
 }
 
 // ═══════════════════════════════════════════════
