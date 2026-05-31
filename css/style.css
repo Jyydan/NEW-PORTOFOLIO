@@ -4028,6 +4028,9 @@ section { position: relative; }
     .admin-form-panel { width: 100% !important; height: 100% !important; border-radius: 0 !important; }
     .admin-field-row { grid-template-columns: 1fr !important; }
     .admin-tabs { flex-wrap: wrap; }
+    .cv-file-card { flex-direction: column !important; align-items: flex-start !important; }
+    .cv-file-info { width: 100%; }
+    .cv-file-actions { width: 100%; justify-content: flex-start; margin-top: 0.5rem; }
     
     /* Gallery */
     .gallery-main-wrap { aspect-ratio: 16/9 !important; }
