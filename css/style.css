@@ -463,7 +463,10 @@ strong {
 /* ─── HERO VIDEO BACKGROUND ─── */
 .hero-video-wrap {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     z-index: 0;
     overflow: hidden;
 }
@@ -499,7 +502,7 @@ strong {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 22rem 2rem 2rem;
+    padding: 16rem 2rem 2rem;
     z-index: 2;
     overflow: hidden;
 }
@@ -3145,7 +3148,7 @@ section {
     }
 
     .hero {
-        padding: 6rem 1.5rem 3rem;
+        padding: 10rem 1.5rem 3rem;
     }
 
     .hero-cta {
@@ -4661,7 +4664,7 @@ section { position: relative; }
 }
 
 .nav-logo-img {
-    height: 50px;
+    height: 80px;
     width: auto;
     display: block;
     object-fit: contain;
@@ -4674,7 +4677,7 @@ section { position: relative; }
 }
 
 .footer-logo-img {
-    height: 70px;
+    height: 120px;
     width: auto;
     display: block;
     margin: 0 auto;
