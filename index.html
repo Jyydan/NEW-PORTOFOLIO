@@ -434,37 +434,42 @@
     <div class="toast" id="toast">Copied to clipboard</div>
 
     <!-- ═══════════════════════════════════════════════ -->
-    <!-- ═══ PROJECT DETAIL MODAL ═══ -->
+    <!-- ═══ PROJECT FULLSCREEN SHOWCASE (NEW) ═══ -->
     <!-- ═══════════════════════════════════════════════ -->
-    <div id="project-detail-modal" class="project-modal">
-        <div class="project-modal-backdrop" id="project-modal-backdrop"></div>
-        <div class="project-modal-content">
-            <button class="project-modal-close" id="project-modal-close">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-            <div class="project-modal-body">
-                <div class="project-modal-gallery">
-                    <div class="gallery-main-wrap">
-                        <img id="gallery-main-img" src="" alt="Project Screenshot">
-                        <button class="gallery-nav gallery-prev" id="gallery-prev">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                        </button>
-                        <button class="gallery-nav gallery-next" id="gallery-next">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                        </button>
-                        <div class="gallery-counter" id="gallery-counter">1 / 1</div>
-                    </div>
-                    <div class="gallery-thumbs" id="gallery-thumbs"></div>
+    <div id="project-fullscreen-overlay" class="project-fullscreen">
+        <button class="project-fs-close" id="project-fs-close">
+            <span class="close-text">BACK</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        
+        <div class="project-fs-scrollarea">
+            <div class="project-fs-hero">
+                <div class="fs-hero-bg">
+                    <img id="fs-main-img" src="" alt="Project Hero">
+                    <div class="fs-hero-overlay"></div>
                 </div>
-                <div class="project-modal-info">
-                    <div class="modal-status" id="modal-status"></div>
-                    <h2 class="modal-title" id="modal-title"></h2>
-                    <div class="modal-tags" id="modal-tags"></div>
-                    <div class="modal-description" id="modal-description"></div>
-                    <div class="modal-detail-row">
-                        <div class="modal-stack" id="modal-stack"></div>
+                <div class="fs-hero-content">
+                    <div class="fs-status" id="fs-status"></div>
+                    <h1 class="fs-title" id="fs-title"></h1>
+                    <div class="fs-tags" id="fs-tags"></div>
+                </div>
+            </div>
+
+            <div class="project-fs-body">
+                <div class="fs-body-grid">
+                    <div class="fs-main-desc">
+                        <h3>About This Project</h3>
+                        <div id="fs-description"></div>
+                        <div class="fs-links" id="fs-links"></div>
                     </div>
-                    <div class="modal-links" id="modal-links"></div>
+                    <div class="fs-side-info">
+                        <h3>Tech Stack</h3>
+                        <div class="fs-stack" id="fs-stack"></div>
+                    </div>
+                </div>
+
+                <div class="fs-gallery" id="fs-gallery">
+                    <!-- Additional images will be injected here -->
                 </div>
             </div>
         </div>

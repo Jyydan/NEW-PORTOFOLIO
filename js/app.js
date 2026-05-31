@@ -401,35 +401,36 @@ window.renderProjects = function() {
     if (!grid) return;
     const projects = DataManager.getProjects();
 
-    let html = '';
+    let html = '<div class="project-showcase">';
     projects.forEach((project, index) => {
-        const tags = (project.tags || []).slice(0, 3).map(t => `<span class="project-tag-small">${t}</span>`).join('');
+        const tags = (project.tags || []).slice(0, 4).map(t => `<span class="project-tag-lux">${t}</span>`).join('');
         const allImgs = [project.image, ...(project.images || [])].filter(Boolean);
-        const revealClass = index % 2 === 0 ? 'reveal-left' : 'reveal-right';
+        const isReversed = index % 2 !== 0 ? 'reversed' : '';
+        const revealClass = 'reveal'; // Simple reveal for the whole card
 
         let imgHtml;
         if (allImgs.length > 0) {
-            imgHtml = `
-                <img src="${allImgs[0]}" alt="${project.title}" class="project-img-small" loading="lazy">
-                <div class="project-overlay-small">
-                    <span class="click-icon-small">🔍</span>
-                </div>`;
+            imgHtml = `<img src="${allImgs[0]}" alt="${project.title}" class="project-cinematic-img" loading="lazy">`;
         } else {
-            imgHtml = `
-                <div class="project-img-placeholder-small">
-                    <span>No Image</span>
-                </div>`;
+            imgHtml = `<div class="project-img-placeholder-lux"><span>No Image</span></div>`;
         }
 
         html += `
-        <article class="project-card-small ${revealClass}" data-project-id="${project.id}" onclick="openProjectModal('${project.id}')" data-parallax="0.05">
-            <div class="project-thumb-small">${imgHtml}</div>
-            <div class="project-info-small">
-                <h4 class="project-title-small">${project.title}</h4>
-                <div class="project-tags-small">${tags}</div>
+        <article class="project-cinematic-card ${isReversed} ${revealClass}" data-project-id="${project.id}">
+            <div class="project-cinematic-visual" onclick="openFullscreenProject('${project.id}')">
+                ${imgHtml}
+                <div class="visual-overlay"><span class="view-text">VIEW PROJECT</span></div>
+            </div>
+            <div class="project-cinematic-content">
+                <div class="project-status-lux">${project.status === 'LIVE' ? '<span class="live-dot-lux"></span> LIVE' : 'DEVELOPMENT'}</div>
+                <h3 class="project-title-lux" onclick="openFullscreenProject('${project.id}')">${project.title}</h3>
+                <p class="project-desc-lux">${project.description.substring(0, 120)}...</p>
+                <div class="project-tags-lux">${tags}</div>
+                <button class="btn btn-lux" onclick="openFullscreenProject('${project.id}')">Explore Details</button>
             </div>
         </article>`;
     });
+    html += '</div>';
 
     grid.innerHTML = html;
     setupCursorHovers(); setupScrollReveal(); initTiltEffects();
@@ -440,95 +441,47 @@ window.renderProjects = function() {
 // ═══════════════════════════════════════════════
 let galleryImgs = [], galleryIdx = 0;
 
-window.openProjectModal = function(id) {
+window.openFullscreenProject = function(id) {
     const p = DataManager.getProjects().find(x => x.id === id);
     if (!p) return;
-    const modal = document.getElementById('project-detail-modal');
-    galleryImgs = [p.image, ...(p.images || [])].filter(Boolean);
-    galleryIdx = 0;
-
-    const mainImg = document.getElementById('gallery-main-img');
-    if (galleryImgs.length > 0) { mainImg.src = galleryImgs[0]; mainImg.style.display = 'block'; }
+    const overlay = document.getElementById('project-fullscreen-overlay');
+    
+    // Set Hero Image
+    const allImgs = [p.image, ...(p.images || [])].filter(Boolean);
+    const mainImg = document.getElementById('fs-main-img');
+    if (allImgs.length > 0) { mainImg.src = allImgs[0]; mainImg.style.display = 'block'; }
     else { mainImg.src = ''; mainImg.style.display = 'none'; }
 
-    const thumbs = document.getElementById('gallery-thumbs');
-    if (galleryImgs.length > 1) {
-        thumbs.innerHTML = galleryImgs.map((img, i) => `<img src="${img}" alt="Screenshot ${i+1}" class="${i===0?'active':''}" onclick="switchGallery(${i})">`).join('');
-        thumbs.style.display = 'flex';
-    } else { thumbs.innerHTML = ''; thumbs.style.display = 'none'; }
-
-    updateCounter();
-    document.getElementById('gallery-prev').style.display = galleryImgs.length > 1 ? 'flex' : 'none';
-    document.getElementById('gallery-next').style.display = galleryImgs.length > 1 ? 'flex' : 'none';
-
+    // Set Info
     const dc = p.status === 'LIVE' ? 'var(--accent)' : 'var(--gold)';
-    document.getElementById('modal-status').innerHTML = `<span class="live-dot" style="background:${dc};box-shadow:0 0 6px ${dc}"></span> ${p.status}`;
-    document.getElementById('modal-title').textContent = p.title;
-    document.getElementById('modal-tags').innerHTML = (p.tags||[]).map(t => `<span class="project-tag">${t}</span>`).join('');
-    document.getElementById('modal-description').textContent = p.description;
-    document.getElementById('modal-stack').innerHTML = p.stack ? `<strong>Tech Stack:</strong> ${p.stack}` : '';
+    document.getElementById('fs-status').innerHTML = `<span class="live-dot" style="background:${dc};box-shadow:0 0 10px ${dc}"></span> ${p.status}`;
+    document.getElementById('fs-title').textContent = p.title;
+    document.getElementById('fs-tags').innerHTML = (p.tags||[]).map(t => `<span class="fs-tag">${t}</span>`).join('');
+    
+    // Set Details
+    document.getElementById('fs-description').textContent = p.description;
+    document.getElementById('fs-stack').innerHTML = (p.stack || '').split(',').map(s => `<span class="fs-stack-item">${s.trim()}</span>`).join('');
 
+    // Set Links
     let links = '';
-    if (p.liveUrl) links += `<a href="${p.liveUrl}" target="_blank" class="btn btn-primary btn-sm">🌐 Live Demo</a>`;
-    if (p.githubUrl) links += `<a href="${p.githubUrl}" target="_blank" class="btn btn-secondary btn-sm">📂 GitHub</a>`;
-    document.getElementById('modal-links').innerHTML = links;
+    if (p.liveUrl) links += `<a href="${p.liveUrl}" target="_blank" class="btn btn-primary">Visit Live Site</a>`;
+    if (p.githubUrl) links += `<a href="${p.githubUrl}" target="_blank" class="btn btn-secondary">View Repository</a>`;
+    document.getElementById('fs-links').innerHTML = links;
 
-    modal.classList.add('active');
+    // Set Gallery Images (excluding the hero image)
+    const galleryHtml = allImgs.slice(1).map(img => `<div class="fs-gallery-item"><img src="${img}" loading="lazy"></div>`).join('');
+    document.getElementById('fs-gallery').innerHTML = galleryHtml;
+
+    // Show Overlay
+    overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     setupCursorHovers();
 };
-
-window.switchGallery = function(i) {
-    if (i < 0 || i >= galleryImgs.length) return;
-    const dir = i > galleryIdx ? 1 : (i < galleryIdx ? -1 : 1);
-    galleryIdx = i;
-    
-    const img = document.getElementById('gallery-main-img');
-    
-    // Start exit animation (slide out slightly and fade)
-    img.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-    img.style.transform = `scale(0.97) translateX(${dir * -20}px)`;
-    img.style.opacity = '0';
-    
-    setTimeout(() => { 
-        img.src = galleryImgs[i]; 
-        
-        // Reset to start position for enter animation
-        img.style.transition = 'none';
-        img.style.transform = `scale(1.03) translateX(${dir * 20}px)`;
-        
-        // Force reflow
-        void img.offsetWidth;
-        
-        // Execute enter animation
-        img.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
-        img.style.transform = 'scale(1) translateX(0)';
-        img.style.opacity = '1'; 
-    }, 250);
-    
-    document.querySelectorAll('#gallery-thumbs img').forEach((t, j) => t.classList.toggle('active', j === i));
-    updateCounter();
-};
-
-function updateCounter() {
-    const c = document.getElementById('gallery-counter');
-    if (galleryImgs.length > 0) { c.textContent = `${galleryIdx+1} / ${galleryImgs.length}`; c.style.display = 'block'; }
-    else c.style.display = 'none';
-}
-
-document.getElementById('gallery-prev')?.addEventListener('click', () => switchGallery((galleryIdx-1+galleryImgs.length)%galleryImgs.length));
-document.getElementById('gallery-next')?.addEventListener('click', () => switchGallery((galleryIdx+1)%galleryImgs.length));
-
-function closeProjectModal() { document.getElementById('project-detail-modal').classList.remove('active'); document.body.style.overflow = ''; }
-document.getElementById('project-modal-close')?.addEventListener('click', closeProjectModal);
-document.getElementById('project-modal-backdrop')?.addEventListener('click', closeProjectModal);
+function closeFullscreenProject() { document.getElementById('project-fullscreen-overlay').classList.remove('active'); document.body.style.overflow = ''; }
+document.getElementById('project-fs-close')?.addEventListener('click', closeFullscreenProject);
 document.addEventListener('keydown', e => {
-    const m = document.getElementById('project-detail-modal');
-    if (e.key === 'Escape' && m.classList.contains('active')) { closeProjectModal(); return; }
-    if (m.classList.contains('active')) {
-        if (e.key === 'ArrowLeft') switchGallery((galleryIdx-1+galleryImgs.length)%galleryImgs.length);
-        if (e.key === 'ArrowRight') switchGallery((galleryIdx+1)%galleryImgs.length);
-    }
+    const overlay = document.getElementById('project-fullscreen-overlay');
+    if (e.key === 'Escape' && overlay.classList.contains('active')) { closeFullscreenProject(); return; }
 });
 
 // ═══════════════════════════════════════════════
